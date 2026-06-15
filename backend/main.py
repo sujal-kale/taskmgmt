@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import os
+import warnings
+
+# Suppress SQLAlchemy deprecation warnings for Python 3.14 compatibility
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from app.database.db import Base, engine
 from app.api.routes import router as task_router
